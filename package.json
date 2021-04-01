@@ -1,0 +1,23 @@
+{
+  "name": "rnn-6s198",
+  "version": "2.0.0",
+  "description": "Homework assignment on RNNs",
+  "main": "character_demo.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marksherman/rnn-6s198.git"
+  },
+  "author": "Mark Sherman <profmarksherman@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marksherman/rnn-6s198/issues"
+  },
+  "homepage": "https://github.com/marksherman/rnn-6s198#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-plugin-html": "^6.1.2"
+  }
+}

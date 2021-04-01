@@ -136,7 +136,7 @@ var initVocab = function(sents, count_threshold) {
   output_size = vocab.length + 1;
   epoch_size = sents.length;
   $("#prepro_status").text('found ' + vocab.length + ' distinct characters: ' + vocab.join(''));
-}
+};
 
 var utilAddToModel = function(modelto, modelfrom) {
   for(var k in modelfrom) {
@@ -145,7 +145,7 @@ var utilAddToModel = function(modelto, modelfrom) {
       modelto[k] = modelfrom[k];
     }
   }
-}
+};
 
 var initModel = function() {
   // letter embedding vectors
@@ -161,7 +161,7 @@ var initModel = function() {
   }
 
   return model;
-}
+};
 
 var reinit_learning_rate_slider = function() {
   // init learning rate slider for controlling the decay
@@ -177,7 +177,7 @@ var reinit_learning_rate_slider = function() {
     }
   });
   $("#lr_text").text(learning_rate.toFixed(5));
-}
+};
 
 var reinit = function() {
   // note: reinit writes global vars
@@ -207,7 +207,7 @@ var reinit = function() {
 
   initVocab(data_sents, 1); // takes count threshold for characters
   model = initModel();
-}
+};
 
 var saveModel = function() {
   var out = {};
@@ -236,7 +236,7 @@ var saveModel = function() {
   out['indexToLetter'] = indexToLetter;
   out['vocab'] = vocab;
   $("#tio").val(JSON.stringify(out));
-}
+};
 
 var loadModel = function(j) {
   hidden_sizes = j.hidden_sizes;
@@ -254,12 +254,12 @@ var loadModel = function(j) {
   solver.decay_rate = j.solver.decay_rate;
   solver.smooth_eps = j.solver.smooth_eps;
   solver.step_cache = {};
-  for(var k in j.solver.step_cache){
-      if(j.solver.step_cache.hasOwnProperty(k)){
-          var matjson = j.solver.step_cache[k];
-          solver.step_cache[k] = new R.Mat(1,1);
-          solver.step_cache[k].fromJSON(matjson);
-      }
+  for (var k in j.solver.step_cache) {
+    if (j.solver.step_cache.hasOwnProperty(k)) {
+      var matjson = j.solver.step_cache[k];
+      solver.step_cache[k] = new R.Mat(1, 1);
+      solver.step_cache[k].fromJSON(matjson);
+    }
   }
   letterToIndex = j['letterToIndex'];
   indexToLetter = j['indexToLetter'];
@@ -268,7 +268,7 @@ var loadModel = function(j) {
   // reinit these
   ppl_list = [];
   tick_iter = 0;
-}
+};
 
 var forwardIndex = function(G, model, ix, prev) {
   var x = G.rowPluck(model['Wil'], ix);
@@ -291,7 +291,7 @@ var forwardIndex = function(G, model, ix, prev) {
     //var out_struct = R.forwardLSTM( , , , , );
   }
   return out_struct;
-}
+};
 
 var predictSentence = function(model, samplei, temperature) {
   if(typeof samplei === 'undefined') { samplei = false; }
@@ -333,7 +333,7 @@ var predictSentence = function(model, samplei, temperature) {
     s += letter;
   }
   return s;
-}
+};
 
 var costfun = function(model, sent) {
   // takes a model and a sentence and
@@ -361,11 +361,11 @@ var costfun = function(model, sent) {
 
     // write gradients into log probabilities
     logprobs.dw = probs.w;
-    logprobs.dw[ix_target] -= 1
+    logprobs.dw[ix_target] -= 1;
   }
   var ppl = Math.pow(2, log2ppl / (n - 1));
   return {'G':G, 'ppl':ppl, 'cost':cost};
-}
+};
 
 function median(values) {
   values.sort( function(a,b) {return a - b;} );
@@ -405,7 +405,7 @@ var tick = function() {
     $('#samples').html('');
     for(var q=0;q<5;q++) {
       var pred = predictSentence(model, true, sample_softmax_temperature);
-      var pred_div = '<div class="apred">'+pred+'</div>'
+      var pred_div = '<div class="apred">'+pred+'</div>';
       $('#samples').append(pred_div);
     }
   }
@@ -413,7 +413,7 @@ var tick = function() {
     // draw argmax prediction
     $('#argmax').html('');
     var pred = predictSentence(model, false);
-    var pred_div = '<div class="apred">'+pred+'</div>'
+    var pred_div = '<div class="apred">'+pred+'</div>';
     $('#argmax').append(pred_div);
 
     // keep track of perplexity
@@ -428,7 +428,7 @@ var tick = function() {
       pplGraph.drawSelf(document.getElementById("pplgraph"));
     }
   }
-}
+};
 
 var gradCheck = function() {
   var model = initModel();
@@ -458,7 +458,7 @@ var gradCheck = function() {
       }
     }
   }
-}
+};
 
 var iid = null;
 $(function() {

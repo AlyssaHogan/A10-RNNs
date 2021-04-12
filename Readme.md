@@ -135,42 +135,5 @@ Just make sure each "sentence" is on a different line.
 
 > What new database did you load? Take a few screenshots of some sentences you were able to create.
 
-3: Music generation with Tensorflow (Wednesday in-class and homework)
-
-So far in this course, we haven't implemented a model from start to finish. Let's go through a step by step tutorial in Tensorflow. Tensorflow is the xs analogy to to DeepLearn.JS. You may choose to use it when you begin your projects next week.
-
-In this assignment, you will generate music by training an RNN.
-
-First, you'll need to install some libraries.\
-pip install tensorflow\
-pip install jupyter
-
-You also need software that can play midi files, such as Garageband (for Macs) or Musescore <https://musescore.org/en>.
-
-Then, clone the repo at: <https://github.com/mfranzs/rnn_assignment>
-
-We will use Jupyter notebooks to run code. Jupyter notebooks are web documents that contain live code. You can run blocks of code by clicking the play button. The variables initialized or computed in one code block will be stored, and then you can call on them in following code blocks.
-
-Open your terminal and "cd" into the project directory. Enter the following:\
-jupyter notebook
-
-Then, open your browser to localhost, and you should see the files listed on your jupyter homepage. The notebook named "Intro to Tensorflow.ipynb" is a useful tutorial on how to define graphs and run neural networks. Feel free to look at it to familiarize yourself with TensorFlow. The solutions are also attached. The assignment you need to complete is in "Music Generation with RNNs.ipynb".
-
-For Mac users, the assignment should run as is.\
-Windows users will have to make the following modifications:\
-1) Change the first cell in the "Music Generation with RNNs.ipynb" file from "!pip install python-midi" to "!pip install git+<https://github.com/vishnubob/python-midi@feature/python3>".
-
-2) In util/create_dataset.py, change line 1 from "import midi-manipulation" to "from . import midi_manipulation".
-
-<WRITEUP REQUIRED>\
-1\. Follow the steps outlined in the notebook. You need to fill out the lines marked #TODO with the appropriate code. Once you are finished, upload your solution code file to your website in a way that would allow us to download and run it. Note: You may also need to install matplotlib if it has not already been installed.
-
-2\. Upload the midi file for your generated music clip to your website!
-
-4: Sketch RNN (for fun!)
-
-Here's a cool demonstration of the effectiveness of RNN's.\
-<https://magenta.tensorflow.org/sketch-rnn-demo>
-
-<WRITEUP OPTIONAL>\
-1\. Find and describe an interesting application or modification of recurrent neural networks. Some useful keywords include PixelRNN, attention mechanisms, and reinforcement learning. Feel free to explore /r/machinelearning and arXiv for more ideas.
+# Submission
+Commit and push your changes to this repository.

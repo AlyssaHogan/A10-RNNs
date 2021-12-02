@@ -72,7 +72,7 @@ We will use a modified version of the Karpathy's demo code, written in Recurrent
 * Clone this assignment. 
 * Open the assignment folder in Visual Studio Code.
 * Use the Live Server plugin to "Go Live" - which will open a browser window.
-* In the browser, click `character_demo.html`
+* In the browser, click `index.html`
 
 The demo will come up when you open the page. As usual also open the browser developer tools Javascript console to help you see what is happening.
 

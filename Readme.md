@@ -109,7 +109,11 @@ Note: Documentation on RecurrentJS is here: <https://github.com/karpathy/recurre
 > What is the perplexity? what does this value indicate to you?
 
 ### Problem 2 - WRITEUP REQUIRED
-2\. Adjust the softmax sample temperature, and continue training for a few samples. Softmax sample temperature is a hyperparameter that determines how softmax computes the log probabilities of the prediction outputs. If the temperature is high, the probabilities will go toward zero and you will see less frequent words. If the temperature is low, then you will see more common words, but there may be more repetition. Try to find a temperature that produces the most natural seeming text, and give some examples of your generated sentence results.
+2\. Softmax sample temperature is a hyperparameter that determines how softmax computes the log probabilities of the prediction outputs. If the temperature is high, the probabilities will go toward zero and you will see less frequent words. If the temperature is low, then you will see more common words, but there may be more repetition.
+
+Try three different ranges of softmax temperature: one between `0.2 - 0.3`, one between `0.3 - 0.5` and one between `0.5 - 1.0`. Choose a value in each range and note the results for each value. 
+
+Choose one of the three ranges to fine-tune, which you will use in the following problems. Based on your chosen range, try to find a temperature that produces the most natural seeming text, and give some examples of your generated sentence results.
 
 > What temperature did you find? Show examples of results. 
 

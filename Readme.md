@@ -3,53 +3,15 @@
 Adapted by Mark Sherman <shermanm@emmanuel.edu> from MIT 6.S198 under Creative Commons
 Emmanuel College - IDDS 2132 Practical Machine Learning - Spring 2021
 
-This assignment is based on work by Kevin Zhang, Harini Suresh, Wendy Wei, Martin Schneider, Natalie Lao, and Hal Abelson
+This assignment is based on work by Kevin Zhang, Harini Suresh, Wendy Wei, Martin Schneider, Natalie Lao, and Hal Abelson. Updated by Alyssa Hogan. 
 
 0\. Introduction to RNN's (In-class Monday)
 
-Until now, our neural networks have been been single use - once trained, we gave them an input, and they returned an output, but remembered nothing about previous ones. Often times, we would like our networks to make decisions that rely on some memory of what came before: For example, when processing a video clip, each frame should be interpreted by the network in the context of previously seen frames.
+In this assignemnt, we will focus on modeling sentences using an example of an RNN. Below is the diagram of an RNN (Figure 1) to use as reference throughout the assignment. This assignemnt involves training small networks, although you may find that it still takes about 10~15 minutes for the training to complete. 
 
-In this unit, we will learn about a new type of neural network architecture that has memory, and that allows us to effectively model sequenced data. Recurrent neural networks have been successfully used for natural language processing tasks such as sentiment analysis and machine translation, and they can be adapted to work for many other machine learning tasks like music and image generation.
+Figure 1: 
 
-We will focus on modeling sentences in this assignment. The diagram in Figure 1 represents the data flow through a single RNN cell. In order to model a sequence of words, we define input x_t to be a vector representing the word at time t. The network combines this input with s_t, the hidden state at time t, to produce a new hidden state for the next cell at time t+1. This state represents its "memory" of previous inputs. It generally does not contain the exact values of previous inputs, but rather a different representation that summarizes meaningful features (for example, the cell may care about whether the previous word was a verb or a noun, but not how many letters it had).
-
-Given a series of inputs, we apply our RNN cell sequentially to each input, updating the hidden state as we go along. Figure 2 shows a simple RNN with outputs y_t at each time step. In the figure that each circle is the same cell, but at a different time step, with s_t being the value recurring (memorized) from the previous time step.
-
-Single Cell
-
-![](https://lh5.googleusercontent.com/Gm50iMd3z7FdzegCnxorYEp6dhrnd60JxM6iHeqsOZvecOuZRqHk6a1qFrPPbBjVTGrFJ_c2P3NqRLbqN6b6Oogpn4t9649HQ6v-sssvKu1ineE6TyHCXYHDNfEUt_0Z=w360)
-
-0.1 Simple RNN
-
-We will examine two concrete implementations of recurrent network cells. The original recurrent neural network (RNN) proposed by Jeff Elman in 1990 has largely been superseded by the long-short term memory (LSTM) and gated recurrent units (GRU), but it can still be used as a simple baseline.
-
-Figure 3 shows the equations for our simple RNN cell. The new hidden state is a function of the previous hidden state and the current input. By applying this recursively, we see that the hidden state is a function of all previous inputs.
-
-In practice, however, simple RNNs often fail to learn long-term dependencies, which is why researchers have proposed alternatives such as the LSTM and GRU.
-
-![](https://lh4.googleusercontent.com/fpBcFtjBaNwhQQtIZqsYxyOTH91zYEj51wfVNERYj69GXwLgJG7OoSoQM9fbB-bxv5Ln418oqWHQsBYmOaHuRRQFVH9IZT1p8ADy-XcqmC_hzs0uS-EJmvshfoda9d0Q=w470)
-
-Equations for simple RNN
-
-![](https://lh3.googleusercontent.com/EHaH1s-OYvkWEpp3wSbWBApF2S-x5O54xCd8kDPehj_UIVxh6sRGwp3RnRumrU98Wv_rzcmWf9Q7Jq5mJbKre2dmP9_HMyzyk02QRsVsTAjHXD_i5taAGn0GiEp6dli-=w332)
-
-0.2 LSTM
-
-The original equations for the long-short term memory (LSTM) network are presented below. The f, i, and o variables are referred to as the forget, input, and output gates. They allow the model to explicitly control how much of the hidden state to forget, how much of the hidden state to replace with new inputs, and how much of the hidden state to show the "world".
-
-By explicitly allowing our model to control what to remember and what to forget, we see much better performance on tasks that require long-term memory.
-
-We will take a deeper look at a really good (aka much better) explanation of what is going on with LSTMs (with pretty pictures too).
-
-Equations for original LSTM
-
-![](https://lh4.googleusercontent.com/xloQjARU8ZjKjJSH2OxhcghCMcs3RCQFrJHPt1S3VleCJN-c5SQxnb7CtoKEDVOo--e1MylSay9T5tHZtJTaGcH3H-bCLk4DeYaiXVwtQp2k4NloC5vKcGZbCBky-us3=w446)
-
-Recurrent neural networks are very powerful... but they are also difficult to train.
-
-Due to their sequential nature, the full sequence of outputs can be computed only after the entire sequence of inputs has been processed, which means training cannot be fully parallelized. Furthermore, exploding and vanishing gradients are a much bigger problem in recurrent networks than in feedforward or convolutional networks.
-
-Fortunately in this assignment, we will train small networks. You may still need to wait 10~15 minutes for training to complete.
+<img width="856" alt="RNN" src="https://user-images.githubusercontent.com/77938288/149813795-760f679d-8240-44b2-ab08-c785c2068134.png">
 
 # 1: Text Generation
 

@@ -7,7 +7,7 @@ This assignment is based on work by Kevin Zhang, Harini Suresh, Wendy Wei, Marti
 
 0\. Introduction to RNN's (In-class Monday)
 
-In this assignemnt, we will focus on modeling sentences using an example of an RNN. Below is the diagram of an RNN (Figure 1) to use as reference throughout the assignment. This assignemnt involves training small networks, although you may find that it still takes about 10~15 minutes for the training to complete. 
+In this assignemnt, we will focus on modeling sentences using an example of an RNN. Below is the diagram of an RNN (Figure 1) to use as reference throughout the assignment. This assignment involves training small networks, although you may find that it still takes about 10~15 minutes for the training to complete. 
 
 Figure 1: 
 
